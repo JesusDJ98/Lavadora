@@ -8,21 +8,24 @@ En definitiva era mi primera actividad con kivy y aunque no es la mejor, cumple 
 
 # Imagenes
 
-![Inicio](https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/Inicio.PNG)
-Pantalla de inicio, en el que el boton central cargar las redes neuronales.
-<br>
-<img src="https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/Inicio.PNG">
+<p align="center">
+	Pantalla de inicio, en el que el boton central cargar las redes neuronales.
+	<br>
+	<img src="https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/Inicio.PNG" />
+</p>
 <br><br>
 
-
-![Pantalla1](https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/1.PNG)
+<p align="center">
 Introducimos la ropa que desamos lavar y su color
 <br>
-<img src="https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/1.PNG">
+<img src="https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/1.PNG" />
+</p>
 <br><br>
 
 
-Mostramos los tejidos mas comunes, si su ropa es de otro tejido puede modificarlo
-<br>
-<img src="https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/2.PNG">
-<br><br>
+<p align="center">
+	Mostramos los tejidos mas comunes, si su ropa es de otro tejido puede modificarlo
+	<br>
+	<img src="https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/2.PNG" />
+	<br><br>
+</p>
