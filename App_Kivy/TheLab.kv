@@ -1,0 +1,574 @@
+#Only one can
+#ScreenInicio:
+#SecondScreen:
+#prueba:
+
+
+#-------------------------------------------------------
+#               ZONAS DE PANTALLA COMUNES
+#-------------------------------------------------------
+
+<Cabecera@BoxLayout>:
+    id: cabecera
+    size_hint: 1, 0.2
+    pos_hint: {'center_x': 0.5, 'top': 1}
+    canvas:
+        Color:
+            rgb: 0, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        font_size: '25sp'
+        text: "Apprende Laundry"
+        color: 0,0,0, 1
+
+<Pie@BoxLayout>:
+    id: Pie
+    size_hint: 1, 0.1
+    pos_hint: {'center_x': 0.5, 'bottom': 1}
+    canvas:
+        Color:
+            rgb: 1, 0, 0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        font_size: '12sp'
+        text: "Autor: Jesús Delgado Jiménez"
+
+<PubliIzq@BoxLayout>:
+    id: PubliIzq
+    size_hint: 0.2, 0.7
+    pos_hint: {'left': 1, 'center_y': 0.45}
+    canvas:
+        Color:
+            rgb: 1, 1, 0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        font_size: '12sp'
+        text: "Publi"
+
+<PubliDer@BoxLayout>:
+    id: PubliDer
+    size_hint: 0.2, 0.7
+    pos_hint: {'right': 1, 'center_y': 0.45}
+    canvas:
+        Color:
+            rgb: 1, 1, 0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        font_size: '12sp'
+        text: "Publi"
+
+
+<Cuerpo@BoxLayout>:
+    id: Cuerpo
+    size_hint: 0.6, 0.7
+    pos_hint: {'center_x': 0.5, 'center_y': 0.45}
+    canvas:
+        Color:
+            rgb: 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+#-------------------------------------------------------
+#               PANTALLA DE INICIO
+#-------------------------------------------------------
+<ScreenInicio>:
+    Cabecera:
+    PubliIzq:
+    PubliDer:
+    Cuerpo:
+        orientation: 'vertical'
+        BoxLayout:
+            size_hint: 1, 0.2
+        Button:
+            id: Lavadora
+            text: "Lavadora"
+            #size: "250dp", "120dp"
+            size_hint: 0.5, None   #Para que yo decida su tamaño hay que poner None, None
+            #pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            pos_hint: {'center_x': 0.5}
+            on_press: app.Inicializar()
+            on_press: root.manager.transition.direction = 'left'
+            on_press: root.manager.transition.duration = 1
+            on_press: root.manager.current = 'screen_Ropa'
+            #on_touch_down: print('Hola')
+        BoxLayout:
+            size_hint: 1, 0.2
+    Pie:
+
+#-------------------------------------------------------
+#               PANTALLA DE INTRODUCIR ROPA
+#-------------------------------------------------------
+<ScreenRopa>:
+    Cabecera:
+    PubliIzq:
+    PubliDer:
+    Cuerpo:
+        orientation: "vertical"
+        BoxLayout:
+            id: Titulo
+            size_hint: 1, 0.2
+            Label:
+                text: "1. Separe la Ropa que desea Lavar"
+                color: 0,0,0, 1
+                font_size: '20sp'
+
+        BoxLayout:
+            id: ZonaMedia
+            orientation: "vertical"
+            BoxLayout:
+                id: Colores
+                orientation: "vertical"
+                size_hint: 1, 0.3
+                pos_hint: {'center_x': 0.5, 'top': 1}
+                BoxLayout:
+                    size_hint: 1, 0.3
+                BoxLayout:
+                    orientation: "horizontal"
+                    Label:
+                        text: 'Color'
+                        color: 0,0,0, 1
+                    CheckBox:
+                        id: checkColor
+                        color: 0,0,0,1
+                        active: (True if app.Color else False)
+                        on_active: root.ClickCheckColor()
+                    Label:
+                        text: 'Blanco'
+                        color: 0,0,0, 1
+                    CheckBox:
+                        id: checkBlanco
+                        color: 0,0,0,1
+                        active: (True if app.Blanco else False)
+                        on_active: root.ClicCheckBlanco()
+                BoxLayout:
+                    size_hint: 1, 0.3
+                    Label:
+                        id: Respuesta
+                        text: ''
+                        font_size: "12sp"
+                        color: 0,0,0,1
+                        pos_hint: {'top': 1}
+                BoxLayout:
+                    size_hint: 1, 0.3
+
+            BoxLayout:
+                id: Caja_Input
+                orientation: 'vertical'
+                BoxLayout:
+                    id: info
+                    orientation: "vertical"
+                    Label:
+                        text: "Introduzca la ropa que desea lavar"
+                        font_size: '15sp'
+                        size_hint: 1, 0.2
+                        color: 0,0,0,1
+                    TextInput:
+                        id: InputRopa
+                        text: str(app.Lista_Ropa_Insertada)
+                        size_hint: 0.8, 0.4
+                        pos_hint: {'center_x': 0.5, 'center_x': 0.5}
+                BoxLayout:
+                    size_hint: 1, 0.1
+
+        BoxLayout:
+            id: ZonaBaja
+            orientation: "vertical"
+            size_hint: 1, 0.2
+            Label:
+                id: mensaje
+                text: ""
+                color: 1,0,0, 1
+                size_hint: 1, 0.5
+            BoxLayout:
+                id: Botones
+                orientation: "horizontal"
+                size_hint: 1, 0.5
+                BoxLayout:  #Esto para que este en la pos que quiero
+                BoxLayout:
+                BoxLayout:
+                Button:
+                    id: bt1_continuar
+                    #size_hint: 1, 1
+                    text: "Continuar"
+                    on_press: root.Continuar(InputRopa,app.modeloTejido)
+                    on_press: root.manager.transition.direction = 'left'
+                    on_press: root.manager.transition.duration = 1
+                    on_release: root.manager.current = ('screen_Tejido' if root.pasamos else 'screen_Ropa')
+
+    Pie:
+
+
+#-------------------------------------------------------
+#               PANTALLA DE ELEGIR PROGRAMA
+#-------------------------------------------------------
+<ScreenProgramas>:
+    Cabecera:
+    PubliIzq:
+    PubliDer:
+    Cuerpo:
+        orientation: "vertical"
+        BoxLayout:
+            id: Titulo
+            size_hint: 1, 0.2
+            Label:
+                text: "3. Elegir Programa"
+                color: 0,0,0, 1
+                font_size: '20sp'
+        BoxLayout:
+            id: ZonaMedia
+            orientation: 'vertical'
+            BoxLayout:
+                size_hint: 1, 0.3
+            BoxLayout:
+                size_hint: 1, 0.1
+                Label:
+                    color: 0,0,0,1
+                    text: 'Mire los programas de su lavadora'
+                    font_size: '15sp'
+            GridLayout:
+                cols: 4
+                BoxLayout:
+                    size_hint: 0.1, 1
+
+                Label:
+                    color: 0, 0, 0, 1
+                    text: 'Prelavado'
+                Switch:
+                    id: BtnSwitch
+                    active: (True if app.Prelavado else False)
+                    on_active: root.StatusSwitch(self.active)
+
+                BoxLayout:
+                    size_hint: 0.1, 1
+                BoxLayout:
+                    size_hint: 0.1, 1
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        color: 0, 0, 0, 1
+                        text: 'Programa'
+                        #pos_hint: {'center_y': 0.5}
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    BoxLayout:
+                    TextInput:
+                        id: inputPrograma
+                        text: ''
+                        size: 0, 30
+                        size_hint: 1, None
+                        #pos_hint: {'center_y': 0.8}
+                        #pos_hint: {'top': 1}   #No hace nada
+                        multiline: False
+                        color: 0, 0, 0, 1
+                    BoxLayout:
+
+                BoxLayout:
+                    size_hint: 0.1, 1
+            BoxLayout:
+                size_hint: None, 0.4
+        BoxLayout:
+            id: ZonaBaja
+            orientation: "vertical"
+            size_hint: 1, 0.2
+            Label:
+                id: mensaje
+                text: ""
+                color: 1,0,0, 1
+                size_hint: 1, 0.5
+            BoxLayout:
+                id: Botones
+                orientation: "horizontal"
+                size_hint: 1, 0.5
+                BoxLayout:  #Esto para que este en la pos que quiero
+                BoxLayout:
+                Button:
+                    id: bt1_atras
+                    text: "Atras"
+                    on_press: root.manager.transition.direction = 'right'
+                    on_press: root.manager.transition.duration = 1
+                    on_press: root.manager.current = 'screen_Tejido'
+                Button:
+                    id: bt1_continuar
+                    text: "Continuar"
+                    on_press: root.ActualizarPrograma()
+                    on_press: root.manager.transition.direction = 'left'
+                    on_press: root.manager.transition.duration = 1
+                    on_press: root.manager.current = 'screen_Salida'
+
+    Pie:
+
+#-------------------------------------------------------
+#               PANTALLA DE EDITAR TEJIDOS
+#-------------------------------------------------------
+<ScreenTejido>:
+    Cabecera:
+    PubliIzq:
+    PubliDer:
+    Cuerpo:
+        orientation: 'vertical'
+        BoxLayout:
+            id: Titulo
+            size_hint: 1, 0.2
+            Label:
+                text: "2. Compruebe el Tejido"
+                color: 0,0,0, 1
+                font_size: '20sp'
+        GridLayout:
+            id: cabecera
+            cols: 7
+            padding: 10
+            spacing: 10
+            height: 30
+            size_hint: 1, None
+        ScrollView:
+            GridLayout:
+                id: scroll_grid
+                cols: 7
+                padding: 10
+                spacing: 10
+                size_hint: 1, None
+        BoxLayout:
+            id: ZonaBaja
+            orientation: "vertical"
+            size_hint: 1, 0.2
+            Label:
+                id: mensaje
+                text: "0 --> No lo contiene | 1 --> Lo contiene"
+                font_size: '12sp'
+                color: 1,0,0, 1
+                size_hint: 1, 0.5
+            BoxLayout:
+                id: Botones
+                orientation: "horizontal"
+                size_hint: 1, 0.5
+                BoxLayout:  #Esto para que este en la pos que quiero
+                BoxLayout:
+                Button:
+                    id: bt1_atras
+                    text: "Atras"
+                    on_press: root.manager.transition.direction = 'right'
+                    on_press: root.manager.transition.duration = 1
+                    on_press: root.manager.current = 'screen_Ropa'
+                Button:
+                    id: bt1_continuar
+                    text: "Continuar"
+                    on_press: root.Continuar(scroll_grid, app.modeloTemp, app.modeloCentri, app.modeloCiclo)
+                    on_press: root.manager.transition.direction = 'left'
+                    on_press: root.manager.transition.duration = 1
+                    on_release: root.manager.current = 'screen_Programas'
+
+    Pie:
+
+#-------------------------------------------------------
+#               PANTALLA DE SALIDA
+#-------------------------------------------------------
+<ScreenSalida>:
+    Cabecera:
+    PubliIzq:
+    PubliDer:
+    Cuerpo:
+        orientation: 'vertical'
+        BoxLayout:
+            id: Titulo
+            size_hint: 1, 0.2
+            Label:
+                text: "4. Ajuste Parametros de su Lavadora"
+                color: 0,0,0, 1
+                font_size: '20sp'
+        BoxLayout:
+            id: ZonaMedia
+            orientation: "vertical"
+            BoxLayout:
+                size_hint: 1, 0.3
+                Label:
+                    text: 'Lavadora'
+                    font_size: '15sp'
+                    color: 0,0,0, 1
+            BoxLayout:
+                id: recuadro
+                size_hint_x: 0.6
+                pos_hint: {'center_x': 0.5}
+                padding: 3
+                canvas:
+                    Color:
+                        rgb: 0, 0, 0
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                GridLayout:
+                    id: Info
+                    cols: 2
+                    canvas:
+                        Color:
+                            rgb: 1, 1, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    Label:
+                        text: 'Color: '
+                        color: 0,0,0, 1
+                    Label:
+                        id: SColor
+                        text: '' #app.colores
+                        color: 0,0,0, 1
+                    Label:
+                        text: 'Prelavado: '
+                        color: 0,0,0, 1
+                    Label:
+                        id: SPrelavado
+                        text: ''
+                        color: 0,0,0, 1
+                    Label:
+                        text: 'Programa: '
+                        color: 0,0,0, 1
+                    Label:
+                        id: SPrograma
+                        text: ''
+                        color: 0,0,0, 1
+                    Label:
+                        text: 'Temperatura: '
+                        color: 0,0,0, 1
+                    Label:
+                        id: STemperatura
+                        text: ''
+                        color: 0,0,0, 1
+                    Label:
+                        text: 'Centrifugado: '
+                        color: 0,0,0, 1
+                    Label:
+                        id: SCentrifugado
+                        text: ''
+                        color: 0,0,0, 1
+                    Label:
+                        text: 'Ciclo: '
+                        color: 0,0,0, 1
+                    Label:
+                        id: SCiclo
+                        text: ''
+                        color: 0,0,0, 1
+
+            BoxLayout:
+                size_hint:  1, 0.2
+                Label:
+                    id: SalidaLavar
+                    text: ''
+                    color: 1,0,0,1
+                    font_size: '20sp'
+
+        BoxLayout:
+            id: ZonaBaja
+            orientation: "vertical"
+            size_hint: 1, 0.2
+            Label:
+                text: ""
+                color: 1,0,0, 1
+                size_hint: 1, 0.5
+            BoxLayout:
+                id: Botones
+                orientation: "horizontal"
+                size_hint: 1, 0.5
+                BoxLayout:  #Esto para que este en la pos que quiero
+                BoxLayout:
+                Button:
+                    id: bt1_atras
+                    text: "Atras"
+                    on_press: root.manager.transition.direction = 'right'
+                    on_press: root.manager.transition.duration = 1
+                    on_press: root.manager.current = 'screen_Programas'
+                Button:
+                    id: bt1_continuar
+                    text: "Continuar"
+                    on_press: root.manager.transition.direction = 'left'
+                    on_press: root.manager.transition.duration = 1
+                    on_press: root.manager.current = 'screen_Detergente'
+
+    Pie:
+
+
+
+
+#-------------------------------------------------------
+#               PANTALLA DE DETERGENTE
+#-------------------------------------------------------
+<ScreenDetergente>:
+    Cabecera:
+    PubliIzq:
+    PubliDer:
+    Cuerpo:
+        orientation: 'vertical'
+        BoxLayout:
+            id: Titulo
+            size_hint: 1, 0.2
+            Label:
+                text: "5. Finalizar"
+                color: 0,0,0, 1
+                font_size: '20sp'
+        BoxLayout:
+            id: ZonaMedia
+            orientation: "vertical"
+            #canvas:
+            #    Color:
+            #        rgb: 1, 1, 0.5
+            #    Rectangle:
+            #        pos: self.pos
+            #        size: self.size
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Primero'
+                    font_size: '18sp'
+                    color: 0,0,0,1
+                Label:
+                    text: 'Introduzca detergente en la lavadora'
+                    font_size: '15sp'
+                    color: 0,0,0,1
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Luego'
+                    font_size: '18sp'
+                    color: 0,0,0,1
+                Label:
+                    text: 'Pulse el boton de inicio'
+                    font_size: '15sp'
+                    color: 0,0,0,1
+        BoxLayout:
+            id: ZonaBaja
+            orientation: "vertical"
+            size_hint: 1, 0.2
+            Label:
+                text: ""
+                color: 1,0,0, 1
+                size_hint: 1, 0.5
+            BoxLayout:
+                id: Botones
+                orientation: "horizontal"
+                size_hint: 1, 0.5
+                BoxLayout:  #Esto para que este en la pos que quiero
+                BoxLayout:
+                Button:
+                    id: bt1_atras
+                    text: "Atras"
+                    on_press: root.manager.transition.direction = 'right'
+                    on_press: root.manager.transition.duration = 1
+                    on_press: root.manager.current = 'screen_Salida'
+                Button:
+                    id: bt1_continuar
+                    text: "Continuar"
+                    on_press: root.Limpiar()
+                    on_press: root.manager.transition.direction = 'left'
+                    on_press: root.manager.transition.duration = 1
+                    on_press: root.manager.current = 'screen_inicio'
+
+    Pie:

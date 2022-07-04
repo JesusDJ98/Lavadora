@@ -1,0 +1,147 @@
+#Only one can
+InitScreen:
+#SecondScreen:
+#prueba:
+
+
+
+
+
+
+
+
+<prueba>:
+    id: Principal
+    v2: input
+    BoxLayout:
+        id: calvas
+        TextInput:
+            id: input
+            text: "Escribe"
+        Button:
+            id: "BotonC"
+            text: 'C'
+            on_press: print(calvas.ids['input'].text) #print(input.text) #esto da error
+        Button:
+            id: BotonD
+            text: 'D'
+            on_press: root.cambiar()
+        Button:
+            id: "BotonCargarConBoton"
+            text: 'BotonCargarConBoton'
+            on_press: app.Pressbtn(self) #necesita app, no vale root
+        Button:
+            id: "BotonCargar"
+            text: 'CargarTemp'
+            on_press: app.CargarRedes()
+        Button:
+            id: "BotonTejido"
+            text: 'Tejido'
+            on_press: app.PrediccionTejido(input)
+        Button:
+            id: "BotonTranslate"
+            text: 'Translate'
+            on_press: app.Transalte(input)
+
+
+<MainWidget>:
+    Button:
+        text: "Hello" #"haha"
+        #size: 200, 350 #Sin nada son pixels
+        size: "200dp", "50dp"  #phisical size
+        pos: 400, 100
+    Label:
+        text: "Hello2"
+        size: "200dp", "350dp"  #phisical size
+        pos: "40dp", "100dp"
+        color: 1, 0, 0, 1 #rgb,alpha
+
+
+<InitScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+        #Cabecera
+            size_hint: 1, 0.3
+            Label:
+                text: "CABECERA"
+        BoxLayout:
+            orientation: 'horizontal'
+            BoxLayout:
+                size_hint: 0.3, 1
+                #Label:
+                #    size_hint: 0.2, 1
+                #    text: "Publi1"
+            AnchorLayout: #Solo puede 1
+                #color: 0,0,1,1 #No sirve
+                anchor_x: "center"
+                anchor_y: "center"
+                Button:
+                    text: "LAVADORA"
+                    #font_size: 25
+                    #large_font: min(25, self.font_size+5)
+                    #padding_x: "5dp"
+                    #padding_y: "20dp"
+                    size_hint: 0.2, 0.2
+                    #size: "120dp", "50dp"
+                    #pos: "10dp", "20dp"
+                    color: 1, 0, 1, 1
+            BoxLayout:
+                size_hint: 0.3, 1
+                #Label:
+                #    size_hint: 0.2, 1
+                #    text: "Publi2"
+        BoxLayout:
+            size_hint: 1, 0.2
+            Label:
+                text: "Pie"
+
+<SecondScreen>: #Ropa que hay en la lavadora
+    BoxLayout:
+        id: 1
+        orientation: 'vertical'
+        BoxLayout:
+            id: 11
+        #Cabecera
+            size_hint: 1, 0.3
+            Label:
+                text: "CABECERA"
+        BoxLayout:
+            id: 12
+            orientation: 'horizontal'
+            BoxLayout:
+                id: 121
+                size_hint: 0.3, 1
+                #Label:
+                #    size_hint: 0.2, 1
+                #    text: "Publi1"
+            BoxLayout: #Info
+                id: 122
+                orientation: 'vertical'
+                Label:
+                    text: 'Ropa'
+                    font_size: 30
+                Label:
+                    text: 'Lo primero es separar la ropa, se recomienda separar por colores parecidos'
+                TextInput:
+                    id: inpput
+                    hint_text: 'Introduzca'
+                Button:
+                    text: 'A'
+                    on_press: root.getInput()
+                Button:
+                    text: 'B'
+                Button:
+                    text: 'C'
+
+            BoxLayout:
+                id: 123
+                size_hint: 0.3, 1
+                #Label:
+                #    size_hint: 0.2, 1
+                #    text: "Publi2"
+        BoxLayout:
+            id: 13
+            size_hint: 1, 0.2
+            Label:
+                text: "Pie"
