@@ -6,3 +6,4 @@ Información que te da la etiqueta, pero suele quitarse o borrarse tras varios l
   - colab research
   - Python
   - Kivy
+  - PyCharm
