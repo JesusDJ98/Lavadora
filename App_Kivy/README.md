@@ -27,5 +27,26 @@ Introducimos la ropa que desamos lavar y su color
 	Mostramos los tejidos mas comunes, si su ropa es de otro tejido puede modificarlo
 	<br>
 	<img src="https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/2.PNG" />
-	<br><br>
 </p>
+<br><br>
+
+<p align="center">
+	Eliges manualmente el programa el programa que quieres modificar sus parametros para tu ropa (Temeratura, Centrifugado ...)
+	<br>
+	<img src="https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/3.PNG" />
+</p>
+<br><br>
+
+<p align="center">
+	Salida generada por las redes
+	<br>
+	<img src="https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/4.PNG" />
+</p>
+<br><br>
+
+<p align="center">
+	Sin hacer, es mostrar donde introducir el detergente y que empiece a lavar, me gustaria que ahi se pudiese valorar la salida para luego utilizarlo para que vayan mejorando las redes.
+	<br>
+	<img src="https://github.com/JesusDJ98/Lavadora/tree/main/App_Kivy/Imagenes/5.PNG" />
+</p>
+<br><br>
